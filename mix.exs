@@ -6,7 +6,7 @@ defmodule Gramfelbot.MixProject do
       app: :gramfelbot,
       version: "0.1.0",
       elixir: "~> 1.11",
-      build_embedded: Mix.env == :prod,
+      build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -24,7 +24,8 @@ defmodule Gramfelbot.MixProject do
   defp deps do
     [
       {:nostrum, "~> 0.4"},
-      {:nosedrum, "~> 0.3"}
+      {:nosedrum, "~> 0.3"},
+      {:distillery, "~> 2.0"}
     ]
   end
 end
