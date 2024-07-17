@@ -5,16 +5,14 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  packages: write
+  attestations: write
+  id-token: write
+
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Publish to GHCR
-      uses: docker/build-push-action@v1
-      with:
-        repository: nint8835/gramfelbot
-        username: nint8835
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: ghcr.io
-        tags: latest
+  build:
+    uses: nint8835/workflows/.github/workflows/docker-build.yaml@main
+    with:
+      image_name: nint8835/gramfelbot
